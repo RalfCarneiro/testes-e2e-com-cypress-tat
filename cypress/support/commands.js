@@ -22,17 +22,17 @@ Cypress.Commands.add('fillSignupFormAndSubmit', (email, password) => {
 })
 
 Cypress.Commands.add('login', (username, password) => {
-    const email = username || Cypress.env('USER_EMAIL');
-    const userPassword = password || Cypress.env('USER_PASSWORD');
+    const email = username || Cypress.env('USER_EMAIL')
+    const userPassword = password || Cypress.env('USER_PASSWORD')
 
-    cy.intercept('GET', '**/notes').as('getNotes');
+    cy.intercept('GET', '**/notes').as('getNotes')
 
-    cy.visit('/login');
-    cy.get('#email').type(email);
-    cy.get('#password').type(userPassword, { log: false });
-    cy.contains('button', 'Login').click();
-    cy.wait('@getNotes', { timeout: 10000 });
-});
+    cy.visit('/login')
+    cy.get('#email').type(email)
+    cy.get('#password').type(userPassword, { log: false })
+    cy.contains('button', 'Login').click()
+    cy.wait('@getNotes', { timeout: 10000 })
+})
 
 Cypress.Commands.add('guiLogin', (
     username = Cypress.env('USER_EMAIL'),
